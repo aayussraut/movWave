@@ -28,9 +28,9 @@ export const fetchUpcoming = () => async (dispatch: Dispatch) => {
       "https://api.themoviedb.org/3/movie/upcoming",
       {
         params: {
-          api_key: "YOUR_API_KEY", // Replace with your TMDb API key
+          api_key: `${import.meta.env.VITE_API_KEY}`,
           language: "en-US",
-          page: 1, // Adjust page number if needed
+          page: 1,
         },
       }
     );
@@ -46,9 +46,9 @@ export const fetchTopRated = () => async (dispatch: Dispatch) => {
       "https://api.themoviedb.org/3/movie/top_rated",
       {
         params: {
-          api_key: "YOUR_API_KEY", // Replace with your TMDb API key
+          api_key: `${import.meta.env.VITE_API_KEY}`,
           language: "en-US",
-          page: 1, // Adjust page number if needed
+          page: 1,
         },
       }
     );
@@ -66,7 +66,7 @@ export const fetchMovieDetails =
         `https://api.themoviedb.org/3/movie/${movieId}`,
         {
           params: {
-            api_key: "YOUR_API_KEY", // Replace with your TMDb API key
+            api_key: `${import.meta.env.VITE_API_KEY}`,
             language: "en-US",
           },
         }
