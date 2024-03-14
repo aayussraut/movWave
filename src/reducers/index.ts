@@ -36,7 +36,6 @@ const initialState: MovieState = {
 const movieReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case "FETCH_NOW_SHOWING":
-      console.log("Here", action.payload);
       return { ...state, nowShowing: action.payload };
     case "FETCH_UPCOMING":
       return { ...state, upcoming: action.payload };

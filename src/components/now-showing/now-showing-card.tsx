@@ -9,7 +9,6 @@ interface NowShowingCardProps {
 }
 
 const NowShowingCard = ({ movie }: NowShowingCardProps) => {
-  // console.log(movie);
   return (
     <div className="flex bg-[#0E1428] px-5 py-2 items-center justify-center mx-6 gap-10 h-96 ">
       <div className="flex flex-col gap-5 w-[800px]">
