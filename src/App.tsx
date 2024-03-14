@@ -1,11 +1,11 @@
-import { Button } from "./components/ui/button";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
-    <div className="text-red-500">
-      Hello World
-      <Button variant={"outline"}>Test</Button>
-    </div>
+    <>
+      <Navbar />
+      <main className="bg-[#060B1C] min-h-screen "></main>
+    </>
   );
 }
 
