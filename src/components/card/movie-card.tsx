@@ -16,11 +16,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         className="w-52 h-60 object-scale-down rounded-md mx-auto"
       />
 
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-4">
         <h1 className="text-white text-md font-bold h-12 line-clamp-2">
           {movie.title}
         </h1>
-        <div className="flex bg-yellow-200/15 px-1 rounded-xl gap-2 items-center justify-center h-fit py-1 ">
+        <div className="flex bg-yellow-200/15 px-2 rounded-xl gap-2 items-center justify-center h-fit py-1 ">
           <MdStarRate fill={"yellow"} size={14} />
           <p className="text-yellow-200 text-xs font-semibold">
             {movie.vote_average.toFixed(1)}

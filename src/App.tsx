@@ -4,6 +4,7 @@ import NowShowingSlider from "./components/now-showing/now-showing-slider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TopRatedMovieSlider from "./components/top-rated-movie/top-rated-movie-slider";
+import UpcommingMovieSlider from "./components/upcomming-movie/upcomming-movie-slider";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <div>
             <NowShowingSlider />
             <TopRatedMovieSlider />
+            <UpcommingMovieSlider />
           </div>
         </div>
       </main>
