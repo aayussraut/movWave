@@ -14,8 +14,6 @@ export const fetchNowShowing = () => async (dispatch: Dispatch) => {
       }
     );
 
-    console.log(response);
-
     dispatch({ type: "FETCH_NOW_SHOWING", payload: response.data.results });
   } catch (error) {
     console.error("Error fetching now showing movies:", error);
