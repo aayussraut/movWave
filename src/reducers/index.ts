@@ -1,9 +1,32 @@
-interface Action {
-  type: string;
-  payload: any;
+export interface Movie {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
 }
 
-const initialState = {
+export interface MovieState {
+  nowShowing: Movie[];
+  upcoming: Movie[];
+  topRated: Movie[];
+  selectedMovie: Movie | null;
+}
+
+interface Action {
+  type: string;
+  payload: Movie[] | Movie | null;
+}
+
+const initialState: MovieState = {
   nowShowing: [],
   upcoming: [],
   topRated: [],
