@@ -1,14 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "./store/index.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/home-page.tsx";
-import MoviePage from "./pages/movie-page.tsx";
-import MovieDetailPage from "./pages/movie-detail-page.tsx";
-import SearchResultPage from "./pages/search-result-page.tsx";
+import Loading from "./components/loading.tsx";
+
+const HomePage = lazy(() => import("./pages/home-page.tsx"));
+const MoviePage = lazy(() => import("./pages/movie-page.tsx"));
+const MovieDetailPage = lazy(() => import("./pages/movie-detail-page.tsx"));
+const SearchResultPage = lazy(() => import("./pages/search-result-page.tsx"));
 
 const router = createBrowserRouter([
   {
@@ -17,19 +19,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "/movie",
-        element: <MoviePage />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <MoviePage />
+          </Suspense>
+        ),
       },
       {
         path: "/movie/:id",
-        element: <MovieDetailPage />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <MovieDetailPage />
+          </Suspense>
+        ),
       },
       {
         path: "search-results",
-        element: <SearchResultPage />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <SearchResultPage />
+          </Suspense>
+        ),
       },
     ],
   },
