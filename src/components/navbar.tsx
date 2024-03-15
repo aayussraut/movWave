@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoNotificationsOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
@@ -19,7 +18,11 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { searchMovies } from "@/action";
 import { connect } from "react-redux";
 
-const Navbar = ({ searchMovies }) => {
+type NavbarProps = {
+  searchMovies: (searchTerm: string, genre: string) => void;
+};
+
+const Navbar = ({ searchMovies }: NavbarProps) => {
   const form = useForm();
   const navigate = useNavigate();
 

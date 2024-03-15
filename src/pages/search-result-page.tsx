@@ -1,9 +1,13 @@
 import MovieCard from "@/components/card/movie-card";
+import { Movie } from "@/reducers";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
 
 const SearchResultPage = () => {
-  const movies = useSelector((state) => state.searchResults);
+  interface RootState {
+    searchResults: Movie[];
+  }
+  const movies = useSelector((state: RootState) => state.searchResults);
 
   return (
     <div className="flex flex-col gap-1 min-h-fit h-full">
