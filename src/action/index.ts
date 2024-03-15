@@ -88,3 +88,36 @@ export const searchMovies = (searchTerm: string, genreId: string) => {
     }
   };
 };
+
+export const discoverMovies = (
+  rating: string,
+  genre: string,
+  year: string,
+  duration: string
+) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const response = await axios.get(
+        "https://api.themoviedb.org/3/discover/movie",
+        {
+          params: {
+            api_key: `${import.meta.env.VITE_API_KEY}`,
+            language: "en-US",
+            sort_by: "popularity.desc",
+            include_adult: false,
+            include_video: false,
+            page: 1,
+            "vote_average.gte": rating,
+            with_genres: genre !== "all" ? genre : undefined,
+            primary_release_year: year !== "all" ? year : undefined,
+            "with_runtime.gte": duration !== "all" ? duration : undefined,
+          },
+        }
+      );
+
+      dispatch({ type: "DISCOVER_MOVIES", payload: response.data.results });
+    } catch (error) {
+      console.error("Error searching movies:", error);
+    }
+  };
+};
