@@ -27,8 +27,6 @@ const Navbar = ({ searchMovies }) => {
     e.preventDefault();
 
     const { searchTerm, genre } = form.getValues();
-    console.log("Search term:", searchTerm);
-    console.log("Selected genre:", genre);
 
     searchMovies(searchTerm, genre);
     navigate("/search-results");
