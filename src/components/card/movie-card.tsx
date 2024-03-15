@@ -2,6 +2,7 @@ import { MdStarRate, MdOutlineRemoveRedEye } from "react-icons/md";
 
 import { Movie } from "../../reducers/index";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 interface MovieCardProps {
   movie: Movie;
@@ -9,7 +10,7 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <div className="flex flex-col bg-[#060B1C] px-4 py-2 gap-2 h-auto w-56 mx-10 my-2 first:ms-4 last:me-0 rounded-lg shadow-lg">
+    <div className="flex flex-col bg-[#060B1C] px-4 py-2 gap-2 h-auto w-56  mx-2 my-2  rounded-lg shadow-lg">
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
@@ -34,13 +35,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       </div>
 
       <div>
-        <Button
-          variant="default"
-          className="flex items-center gap-2 bg-purple-900 w-full"
-        >
-          <MdOutlineRemoveRedEye size={18} fill="white" />
-          <span className="text-white">View Details</span>
-        </Button>
+        <Link to={`/movie/${movie.id}`}>
+          <Button
+            variant="default"
+            className="flex items-center gap-2 bg-purple-900 w-full"
+          >
+            <MdOutlineRemoveRedEye size={18} fill="white" />
+            <span className="text-white">View Details</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );
