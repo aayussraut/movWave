@@ -15,14 +15,10 @@ const MovieDetailPage = ({
   fetchSimilarMovies,
 }) => {
   const movie_id = useParams().id;
-  console.log(movie_id);
   useEffect(() => {
     fetchMovieDetails(movie_id);
     fetchSimilarMovies(movie_id);
   }, [movie_id, fetchMovieDetails, fetchSimilarMovies]);
-
-  console.log(movie);
-  console.log("similar", similarMovies);
 
   return movie && similarMovies ? (
     <div className="h-[calc(100vh-72px)] bg-[#0E1428] ">
