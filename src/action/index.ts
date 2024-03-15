@@ -65,7 +65,6 @@ export const fetchMovieDetails =
         {
           params: {
             api_key: `${import.meta.env.VITE_API_KEY}`,
-            language: "en-US",
           },
         }
       );
@@ -74,3 +73,18 @@ export const fetchMovieDetails =
       console.error("Error fetching movie details:", error);
     }
   };
+
+export const searchMovies = (searchTerm: string, genreId: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&query=${searchTerm}&with_genres=${genreId}`
+      );
+      dispatch({ type: "SEARCH_MOVIES", payload: response.data.results });
+    } catch (error) {
+      console.error("Error searching movies:", error);
+    }
+  };
+};
