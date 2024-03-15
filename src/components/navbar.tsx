@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoNotificationsOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
@@ -19,7 +18,11 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { searchMovies } from "@/action";
 import { connect } from "react-redux";
 
-const Navbar = ({ searchMovies }) => {
+type NavbarProps = {
+  searchMovies: (searchTerm: string, genre: string) => void;
+};
+
+const Navbar = ({ searchMovies }: NavbarProps) => {
   const form = useForm();
   const navigate = useNavigate();
 
@@ -35,10 +38,12 @@ const Navbar = ({ searchMovies }) => {
   return (
     <nav className=" bg-[#0E1428]  text-white  flex justify-center w-full  shadow-sm fixed top-0 z-50 p-2">
       <div className="flex justify-between text-white text-xs w-[1280px] min-w-[1280px]">
-        <div className="text-3xl">
-          <span className="text-white font-bold">mov</span>
-          <span className="text-purple-700 italic font-extrabold">Wave</span>
-        </div>
+        <Link to="/">
+          <div className="text-3xl">
+            <span className="text-white font-bold">mov</span>
+            <span className="text-purple-700 italic font-extrabold">Wave</span>
+          </div>
+        </Link>
 
         <ul className="flex gap-5 items-center ">
           <li className="text-sm font-bold hover:text-purple-700 hover:cursor-pointer">
