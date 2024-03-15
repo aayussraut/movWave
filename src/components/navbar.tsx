@@ -17,7 +17,6 @@ import genres from "@/constants/genres";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { searchMovies } from "@/action";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
 
 type NavbarProps = {
   searchMovies: (searchTerm: string, genre: string) => void;
@@ -138,11 +137,7 @@ const Navbar = ({ searchMovies }: NavbarProps) => {
 
 const mapStateToProps = () => ({});
 
-interface DispatchProps {
-  searchMovies: (searchTerm: string, genre: string) => void;
-}
-
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     searchMovies: (searchTerm: string, genre: string) =>
       dispatch(searchMovies(searchTerm, genre)),
