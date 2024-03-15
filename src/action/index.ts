@@ -121,3 +121,20 @@ export const discoverMovies = (
     }
   };
 };
+
+export const fetchSimilarMovies =
+  (movieId: number) => async (dispatch: Dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+        {
+          params: {
+            api_key: `${import.meta.env.VITE_API_KEY}`,
+          },
+        }
+      );
+      dispatch({ type: "SIMILAR_MOVIES", payload: response.data.results });
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+    }
+  };
