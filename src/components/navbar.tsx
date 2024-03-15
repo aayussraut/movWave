@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoNotificationsOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
@@ -18,8 +17,13 @@ import genres from "@/constants/genres";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { searchMovies } from "@/action";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-const Navbar = ({ searchMovies }) => {
+type NavbarProps = {
+  searchMovies: (searchTerm: string, genre: string) => void;
+};
+
+const Navbar = ({ searchMovies }: NavbarProps) => {
   const form = useForm();
   const navigate = useNavigate();
 
@@ -134,7 +138,11 @@ const Navbar = ({ searchMovies }) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch) => {
+interface DispatchProps {
+  searchMovies: (searchTerm: string, genre: string) => void;
+}
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     searchMovies: (searchTerm: string, genre: string) =>
       dispatch(searchMovies(searchTerm, genre)),
