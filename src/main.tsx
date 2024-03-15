@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store/index.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/loading.tsx";
+import ErrorPage from "./pages/error-page.tsx";
 
 const HomePage = lazy(() => import("./pages/home-page.tsx"));
 const MoviePage = lazy(() => import("./pages/movie-page.tsx"));
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
