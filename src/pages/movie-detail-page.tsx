@@ -7,6 +7,7 @@ import { GoDotFill } from "react-icons/go";
 import { IoPlaySharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "react-router-dom";
+import Loading from "@/components/loading";
 
 const MovieDetailPage = ({
   movie,
@@ -112,7 +113,7 @@ const MovieDetailPage = ({
       </div>
     </div>
   ) : (
-    <div>Hello</div>
+    <Loading />
   );
 };
 const mapStateToProps = (state) => ({
