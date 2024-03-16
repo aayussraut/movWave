@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { MdStarRate } from "react-icons/md";
-import { Button } from "../ui/button";
-
 import { IoPlaySharp, IoTicketSharp } from "react-icons/io5";
+
+import { Button } from "../ui/button";
 import { Movie } from "../../reducers/index";
+import genres from "@/constants/genres";
 
 interface NowShowingCardProps {
   movie: Movie;
@@ -31,26 +33,24 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
         </div>
 
         <div className="flex gap-2 ">
-          <span className="bg-purple-900 text-white px-2 py-1 rounded-2xl text-sm">
-            Action
-          </span>
-          <span className="bg-purple-900 text-white px-2 py-1 rounded-2xl text-sm">
-            Adventure
-          </span>
-
-          {/* <h3 className="text-white text-2xl font-extrabold">Genre</h3>
-          <p className="text-sm text-gray-300">
-            {movie.genre_ids.map((genre) => (
-              <span key={genre}>{genre} </span>
-            ))}
-          </p> */}
+          {movie.genre_ids.map((id) => (
+            <span
+              key={id}
+              className="bg-purple-900 text-white px-2 py-1 rounded-2xl text-sm mr-2"
+            >
+              {Object.keys(genres).find((key) => genres[key] === id)}
+            </span>
+          ))}
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-white text-2xl font-extrabold">Summary</h3>
-          <p className="overflow-hidden line-clamp-5 text-justify">
+          <p className="overflow-hidden line-clamp-2 text-justify">
             {movie.overview}
           </p>
+          <Link to={`/movie/${movie.id}`}>
+            <p className="text-purple-700">Read More --&gt;</p>
+          </Link>
         </div>
 
         <div className="flex gap-2">

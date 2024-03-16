@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Slider from "react-slick";
-
-import NowShowingCard from "./now-showing-card";
 import { fetchNowShowing } from "@/action";
 import { MovieState } from "@/reducers";
+
+import NowShowingCard from "./now-showing-card";
 
 interface NowShowingSliderProps {
   movies: MovieState;
