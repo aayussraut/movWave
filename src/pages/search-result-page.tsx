@@ -1,7 +1,9 @@
-import MovieCard from "@/components/card/movie-card";
-import { Movie } from "@/reducers";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
+
+import { Movie } from "@/reducers";
+
+import MovieCard from "@/components/card/movie-card";
 
 const SearchResultPage = () => {
   interface RootState {

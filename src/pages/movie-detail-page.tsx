@@ -1,12 +1,13 @@
-import { fetchMovieDetails, fetchSimilarMovies } from "@/action";
 import { useEffect } from "react";
 import { MdOutlineRemoveRedEye, MdStarRate } from "react-icons/md";
 import { connect } from "react-redux";
-
+import { Link, useParams } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
 import { IoPlaySharp } from "react-icons/io5";
+
+import { fetchMovieDetails, fetchSimilarMovies } from "@/action";
+
 import { Button } from "@/components/ui/button";
-import { Link, useParams } from "react-router-dom";
 import Loading from "@/components/loading";
 
 const MovieDetailPage = ({
