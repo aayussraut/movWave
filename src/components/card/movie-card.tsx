@@ -1,14 +1,20 @@
+import { Link } from "react-router-dom";
 import { MdStarRate, MdOutlineRemoveRedEye } from "react-icons/md";
 
 import { Movie } from "../../reducers/index";
 import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
+
+import genres from "@/constants/genres";
 
 interface MovieCardProps {
   movie: Movie;
 }
 
 const MovieCard = ({ movie }: MovieCardProps) => {
+  const genreNames = movie.genre_ids.map((id) =>
+    Object.keys(genres).find((key) => genres[key] === id)
+  );
+
   return (
     <div className="flex flex-col bg-[#060B1C] px-4 py-2 gap-2 h-auto w-56  mx-2 my-2  rounded-lg shadow-lg">
       <img
@@ -31,7 +37,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
       <div>
         <p className="text-xs">Release: {movie.release_date}</p>
-        <p className="text-xs">Genre: Action, Adventure</p>
+        <p className="text-xs line-clamp-1"> Genre: {genreNames.join(", ")}</p>
       </div>
 
       <div>
