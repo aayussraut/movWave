@@ -1,11 +1,12 @@
-import { IoIosArrowForward } from "react-icons/io";
-
+import { useEffect } from "react";
 import { connect } from "react-redux";
+import Slider from "react-slick";
+
 import { fetchTopRated } from "@/action";
 import { MovieState } from "@/reducers";
-import { useEffect } from "react";
-import Slider from "react-slick";
+
 import MovieCard from "../card/movie-card";
+import MovieCardWrapper from "../movie/movie-card-wrapper";
 
 interface TopRatedMovieSliderProps {
   movies: MovieState;
@@ -29,19 +30,13 @@ const TopRatedMovieSlider = ({
   };
 
   return (
-    <div className="flex flex-col mt-10 gap-1 min-h-fit h-full">
-      <div className="flex items-center gap-1">
-        <h1 className="text-sm text-white font-extrabold">Top Rated Movies</h1>
-        <IoIosArrowForward size={15} fill="white" />
-      </div>
-      <div className="bg-[#0E1428] ">
-        <Slider {...settings}>
-          {movies.topRated.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </Slider>
-      </div>
-    </div>
+    <MovieCardWrapper title="Top Rated Movies">
+      <Slider {...settings}>
+        {movies.topRated.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </Slider>
+    </MovieCardWrapper>
   );
 };
 
