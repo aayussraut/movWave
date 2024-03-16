@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+
 import App from "./App.tsx";
 import "./index.css";
-import { Provider } from "react-redux";
 import store from "./store/index.ts";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/loading.tsx";
 import ErrorPage from "./pages/error-page.tsx";
 

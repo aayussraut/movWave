@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { IoSearchOutline, IoNotificationsOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { searchMovies } from "@/action";
 
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -12,11 +15,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Form, FormControl, FormField, FormItem } from "./ui/form";
 
 import genres from "@/constants/genres";
-import { Form, FormControl, FormField, FormItem } from "./ui/form";
-import { searchMovies } from "@/action";
-import { connect } from "react-redux";
 
 type NavbarProps = {
   searchMovies: (searchTerm: string, genre: string) => void;
