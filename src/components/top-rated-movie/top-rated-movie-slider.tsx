@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 
@@ -17,6 +17,8 @@ const TopRatedMovieSlider = ({
   movies,
   fetchTopRated,
 }: TopRatedMovieSliderProps) => {
+  const slider = useRef(null);
+
   useEffect(() => {
     fetchTopRated();
   }, []);
@@ -27,11 +29,12 @@ const TopRatedMovieSlider = ({
     slidesToShow: 5,
     slidesToScroll: 6,
     centerPadding: "60px",
+    arrows: false,
   };
 
   return (
-    <MovieCardWrapper title="Top Rated Movies">
-      <Slider {...settings}>
+    <MovieCardWrapper title="Top Rated Movies" sliderRef={slider}>
+      <Slider ref={slider} {...settings}>
         {movies.topRated.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
