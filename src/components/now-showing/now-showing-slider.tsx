@@ -37,7 +37,7 @@ const NowShowingSlider = ({
 
   return (
     <div>
-      <Slider {...settings}>
+      <Slider {...settings} className="now-showing-movie-slider">
         {movies.nowShowing.map((movie) => (
           <NowShowingCard key={movie.id} movie={movie} />
         ))}

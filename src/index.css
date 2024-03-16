@@ -75,3 +75,17 @@
     color: gray
   }
 }
+
+.now-showing-movie-slider{
+  .slick-prev, .slick-next{
+    z-index: 1;
+    opacity: 0;
+    transition:  0.5s ease;
+  }
+  &:hover{
+    
+      .slick-prev, .slick-next{
+        opacity: 1;
+      }
+}
+}
