@@ -1,5 +1,17 @@
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+
 import { discoverMovies } from "@/action";
+
+import { durationOptions } from "@/constants/durations";
+import genres from "@/constants/genres";
+import { ratingOptions } from "@/constants/rating";
+import { yearOptions } from "@/constants/released-year";
+
+import MovieCardWrapper from "@/components/movie/movie-card-wrapper";
+import FilterDropdown from "@/components/movie/filter-dropdown";
 import MovieCard from "@/components/card/movie-card";
+
 import {
   Select,
   SelectContent,
@@ -7,13 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { durationOptions } from "@/constants/durations";
-import genres from "@/constants/genres";
-import { ratingOptions } from "@/constants/rating";
-import { yearOptions } from "@/constants/released-year";
-import { useEffect, useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
-import { connect } from "react-redux";
 
 const MoviePage = ({ movies, discoverMovies }) => {
   const [rating, setRating] = useState("all");
@@ -41,58 +46,32 @@ const MoviePage = ({ movies, discoverMovies }) => {
           </SelectContent>
         </Select>
 
-        <Select onValueChange={setRating} value={rating}>
-          <SelectTrigger className="w-[150px] h-8 focus:outline-none  focus:border-transparent bg-[#0E1428] appearance-none rounded-xl ">
-            <SelectValue placeholder="Rating" />
-          </SelectTrigger>
-          <SelectContent className="border border-white bg-[#0E1428]">
-            {ratingOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select onValueChange={setReleasedYear} value={releasedYear}>
-          <SelectTrigger className="w-[150px] h-8 focus:outline-none  focus:border-transparent bg-[#0E1428] appearance-none rounded-xl ">
-            <SelectValue placeholder="Rating" />
-          </SelectTrigger>
-          <SelectContent className="border border-white bg-[#0E1428]">
-            {yearOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select onValueChange={setDuration} value={duration}>
-          <SelectTrigger className="w-[150px] h-8 focus:outline-none  focus:border-transparent bg-[#0E1428] appearance-none rounded-xl ">
-            <SelectValue placeholder="Rating" />
-          </SelectTrigger>
-          <SelectContent className="border border-white bg-[#0E1428]">
-            {durationOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <FilterDropdown
+          options={ratingOptions}
+          value={rating}
+          onChange={setRating}
+          placeholder="Select Rating"
+        />
+        <FilterDropdown
+          options={yearOptions}
+          value={releasedYear}
+          onChange={setReleasedYear}
+          placeholder="Select Released Year"
+        />
+        <FilterDropdown
+          options={durationOptions}
+          value={duration}
+          onChange={setDuration}
+          placeholder="Select Duration"
+        />
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-1">
-          <h1 className="text-sm text-white font-extrabold">Discover Movies</h1>
-          <IoIosArrowForward size={15} fill="white" />
+      <MovieCardWrapper title="Discover Movies">
+        <div className="flex flex-wrap  justify-center">
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
         </div>
-        <div className="bg-[#0E1428] w-fit">
-          <div className="flex flex-wrap  justify-center">
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
-        </div>
-      </div>
+      </MovieCardWrapper>
     </div>
   );
 };
