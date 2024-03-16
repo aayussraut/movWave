@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 
@@ -17,6 +17,8 @@ const UpcommingMovieSlider = ({
   movies,
   fetchUpcoming,
 }: UpcommingMovieSliderProps) => {
+  const slider = useRef(null);
+
   useEffect(() => {
     fetchUpcoming();
   }, [fetchUpcoming]);
@@ -27,12 +29,13 @@ const UpcommingMovieSlider = ({
     slidesToShow: 5,
     slidesToScroll: 6,
     centerPadding: "60px",
+    arrows: false,
   };
 
   return (
     <div className="pb-5">
-      <MovieCardWrapper title="Upcomming Movies">
-        <Slider {...settings}>
+      <MovieCardWrapper title="Upcomming Movies" sliderRef={slider}>
+        <Slider ref={slider} {...settings}>
           {movies.upcoming.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
