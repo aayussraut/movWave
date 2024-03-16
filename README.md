@@ -1,30 +1,61 @@
-# React + TypeScript + Vite
+# movWave - A Movie Database Web Applcation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for a Movie Database Web Application, a React-based project that interacts with The Movie Database (TMDb) API to display upcoming movies, top-rated movies, and detailed information about selected movies.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check put the live demo <a href="https://mov-wave.vercel.app/">here</a>
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Homepage: Incliudes a slider showcasing currently running movies, upcomming movies and top-rated movies.
+- Navbar: Implemented with a search bar and filter options for genres.
+- Movie Details Page: Displays comprehensive details about selected movies.
+- Movie Page: Displays a list of movie with different filter options
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+To run this project locally, follow these steps:
+
+1. Clone the repository
+
+```
+https://github.com/aayussraut/movWave
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the project directory:
+
+```
+cd movWave
+```
+
+3. Create a .env file in the root directory and add your TMDb API access token:
+
+```
+VITE_API_KEY=your-api-key-here
+```
+
+4. Start the development server:
+
+```
+npm run dev
+```
+
+5. Open your browser and visit http://localhost:5173 to view the application.
+
+## Tech Stack
+
+- React
+- Redux
+- Tailwind CSS
+- Shadcn
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/your-feature-name).
+3. Commit your changes (git commit -am 'Add new feature').
+4. Push to the branch (git push origin feature/your-feature-name).
+5. Create a new Pull Request.
